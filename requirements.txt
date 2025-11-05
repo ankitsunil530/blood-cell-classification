@@ -1,0 +1,27 @@
+# Core Libraries
+numpy
+pandas
+matplotlib
+scikit-learn
+opencv-python
+tqdm
+
+# Deep Learning
+tensorflow==2.15.0
+keras
+torch
+torchvision
+performer-pytorch
+
+# MLOps & Experiment Tracking
+mlflow
+dvc
+dvc[gdrive]
+
+# Web App Deployment
+streamlit
+
+# Utilities
+Pillow
+seaborn
+notebook
