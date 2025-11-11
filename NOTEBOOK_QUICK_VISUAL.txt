@@ -1,0 +1,186 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║  ✅ NOTEBOOK MLFLOW INTEGRATION - COMPLETE & READY                   ║
+║                                                                      ║
+║     अब तुम्हारे notebook से data visualize हो सकेगा!                  ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+🎯 3-MINUTE QUICK START
+════════════════════════════════════════════════════════════════════════
+
+STEP 1️⃣  : Set Notebook Kernel
+────────────────────────────────
+  Ctrl + Shift + P
+  Type: "Python: Select Interpreter"
+  Choose: ./mlflow/Scripts/python.exe
+
+
+STEP 2️⃣  : Start MLflow Server
+─────────────────────────────
+  PowerShell में:
+  
+    .\mlflow\Scripts\activate.ps1
+    mlflow ui
+  
+  फिर browser में: http://localhost:5000
+
+
+STEP 3️⃣  : Run Notebook Cells
+───────────────────────────────
+  1. Cell 23 चलाओ (MLflow initialization)
+  2. Cell 26 चलाओ (ViT training) या Cell 27 (Performer)
+  3. Dashboard को refresh करो (Ctrl+R)
+
+
+✅ DONE! Data दिखने लगेगा! 🎉
+
+
+📊 WHAT HAPPENS WHEN YOU RUN
+════════════════════════════════════════════════════════════════════════
+
+  Cell 23 (MLflow Init):
+  ──────────────────────
+    ✅ Checks Python environment
+    ✅ Verifies torch & mlflow are installed
+    ✅ Sets up experiment "Blood-Cell-Classification-ViT"
+
+
+  Cell 26 (ViT Training):
+  ──────────────────────
+    🚀 Starts training
+    📝 Logs hyperparameters (epochs, lr, batch_size, device)
+    📈 Logs metrics every epoch (accuracy, loss)
+    💾 Saves model as artifact
+    ✅ Creates MLflow run "ViT-PreTrained-5epochs"
+
+
+  Cell 27 (Performer Training):
+  ────────────────────────────
+    🚀 Starts Performer training
+    📝 Logs hyperparameters
+    📈 Logs metrics
+    💾 Saves model
+    ✅ Creates MLflow run "Performer-5epochs"
+
+
+🌐 DASHBOARD (http://localhost:5000)
+════════════════════════════════════════════════════════════════════════
+
+  Left Sidebar → Experiments:
+  ┌─────────────────────────────────────┐
+  │ Blood-Cell-Classification-ViT       │
+  │ Blood-Cell-Classification-Performer │
+  │ Test-Experiment (पुराना)             │
+  └─────────────────────────────────────┘
+
+  Click Experiment → See Runs:
+  ┌────────────────────────────────────────┐
+  │ Run 1: ViT-PreTrained-5epochs          │
+  │ Run 2: Performer-5epochs               │
+  │ Run 3: Simple-Test (पुराना)            │
+  └────────────────────────────────────────┘
+
+  Click Run → See Details:
+  ┌──────────────────────────────────────────────┐
+  │ PARAMS:                                      │
+  │   model_type: Vision Transformer            │
+  │   epochs: 5                                  │
+  │   optimizer: AdamW                           │
+  │                                              │
+  │ METRICS (Graphs):                            │
+  │   ├─ train_loss      [line chart]            │
+  │   ├─ train_accuracy  [line chart]            │
+  │   └─ val_accuracy    [line chart]            │
+  │                                              │
+  │ ARTIFACTS:                                   │
+  │   ├─ vit_model/                    [📁]     │
+  │   │  ├─ data                                 │
+  │   │  ├─ code                                 │
+  │   │  └─ env.yaml                            │
+  │   └─ ...                                     │
+  └──────────────────────────────────────────────┘
+
+
+🔧 WHAT WAS CHANGED IN NOTEBOOK
+════════════════════════════════════════════════════════════════════════
+
+  ✅ Cell 23 (before ViT):
+     Added kernel verification:
+       - Check Python executable
+       - Verify torch & mlflow installed
+       - Initialize MLflow experiment
+
+  ✅ Cell 26 (ViT Training):
+     Updated with MLflow:
+       - mlflow.start_run() wrapper
+       - mlflow.log_param() for hyperparameters
+       - mlflow.log_metric() for accuracy/loss
+       - mlflow.pytorch.log_model() for model saving
+
+  ✅ Cell 27 (Performer Training):
+     Same MLflow integration as ViT:
+       - run, params, metrics, model logging
+
+
+⚡ TROUBLESHOOTING
+════════════════════════════════════════════════════════════════════════
+
+  Error: ModuleNotFoundError: torch
+  ────────────────────────────────
+    Fix: Switch kernel to mlflow venv
+    Ctrl+Shift+P → Python: Select Interpreter
+
+  Error: mlflow command not found
+  ───────────────────────────────
+    Fix: Activate venv first
+    .\mlflow\Scripts\activate.ps1
+    mlflow ui
+
+  Dashboard shows old data, not new
+  ─────────────────────────────────
+    Fix: Hard refresh browser
+    Ctrl + Shift + R (or Cmd+Shift+R on Mac)
+
+  No artifacts showing in Dashboard
+  ──────────────────────────────────
+    Fix: Check mlruns folder
+    dir .\mlruns -Recurse
+    
+    If empty: Notebook ran in wrong env
+
+
+📁 FILE STRUCTURE
+════════════════════════════════════════════════════════════════════════
+
+  blood-cell-classification/
+  ├── notebooks/
+  │   └── Blood_Cell_Classification (2).ipynb  ✅ UPDATED
+  ├── mlruns/                                  ✅ AUTO-CREATED
+  │   ├── 0/                                   (default experiment)
+  │   ├── 346510887194357782/                  (Test-Experiment)
+  │   └── <new_exp_id>/                        (ViT/Performer)
+  │       └── <run_id>/
+  │           ├── artifacts/
+  │           │   ├── vit_model/               ← Model weights
+  │           │   └── performer_model/         ← Model weights
+  │           ├── metrics/                     ← Accuracy, loss
+  │           └── params/                      ← Hyperparameters
+
+
+🎓 NEXT: COMPARE MODELS IN DASHBOARD
+════════════════════════════════════════════════════════════════════════
+
+  After both ViT and Performer training complete:
+
+  1. Go to Dashboard → Experiment
+  2. ✓ Check both runs
+  3. Click "Compare"
+  4. See side-by-side metrics!
+  5. Choose winner → Download best model
+
+
+✅ READY? FOLLOW 3-MINUTE QUICK START ABOVE! 🚀
+
+═══════════════════════════════════════════════════════════════════════════

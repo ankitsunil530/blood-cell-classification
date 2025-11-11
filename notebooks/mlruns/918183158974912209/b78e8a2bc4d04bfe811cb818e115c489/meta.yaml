@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/Blood%20Cell%20Classifiaction/blood-cell-classification/notebooks/mlruns/918183158974912209/b78e8a2bc4d04bfe811cb818e115c489/artifacts
+end_time: 1762890991621
+entry_point_name: ''
+experiment_id: '918183158974912209'
+lifecycle_stage: active
+run_id: b78e8a2bc4d04bfe811cb818e115c489
+run_name: PreTrained-ViT-Model
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762890991341
+status: 3
+tags: []
+user_id: Sunil Kumar

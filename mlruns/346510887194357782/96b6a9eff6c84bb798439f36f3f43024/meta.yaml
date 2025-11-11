@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Blood%20Cell%20Classifiaction/blood-cell-classification/mlruns/346510887194357782/96b6a9eff6c84bb798439f36f3f43024/artifacts
+end_time: 1762874145445
+entry_point_name: ''
+experiment_id: '346510887194357782'
+lifecycle_stage: active
+run_id: 96b6a9eff6c84bb798439f36f3f43024
+run_name: Simple-Test
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762874145113
+status: 3
+tags: []
+user_id: Sunil Kumar

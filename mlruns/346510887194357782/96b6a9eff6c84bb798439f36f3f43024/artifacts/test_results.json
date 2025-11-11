@@ -1,0 +1,8 @@
+{
+    "model": "test_model",
+    "status": "working",
+    "metrics": {
+        "final_accuracy": 0.95,
+        "final_loss": 0.25
+    }
+}
