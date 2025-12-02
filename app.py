@@ -5,11 +5,14 @@ from torchvision import transforms
 from PIL import Image
 
 from your_model_file import BloodCellViT, PerformerModel, CustomViT, Generator  # Import all models
+from flask_cors import CORS
+
 
 # -----------------------
 # Initialize Flask App
 # -----------------------
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:5173"])
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # -----------------------
@@ -94,6 +97,8 @@ def generate_gan():
 # Run App
 # -----------------------
 if __name__ == "__main__":
-    if not os.path.exists("static"):
-        os.makedirs("static")
-    app.run(debug=True)
+    app.run(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
+# -----------------------
+# End of File
+# -----------------------
