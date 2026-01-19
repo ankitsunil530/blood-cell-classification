@@ -12,7 +12,7 @@ from flask_cors import CORS
 # Initialize Flask App
 # -----------------------
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5173","https://blood-cell-classification-azure.vercel.app"], methods=["GET", "POST"])
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # -----------------------
